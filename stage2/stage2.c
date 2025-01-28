@@ -305,7 +305,7 @@ int file_copy(struct thread *td, char* src, char* dst) {
 
 void exec_payload(struct thread *td, char* payload_path) {
   void *file_buffer;
-  size_t file_size;
+  size_t file_size, file_buffer_size;
 
   uint64_t kaslr_offset = rdmsr(MSR_LSTAR) - kdlsym_addr_Xfast_syscall;
 
@@ -331,7 +331,8 @@ void exec_payload(struct thread *td, char* payload_path) {
   }
 
   file_size = file_offset;
-  file_buffer = kmem_alloc(*kernel_map, ROUND_PG(file_size));
+  file_buffer_size = ROUND_PG(file_size + 0x80000);
+  file_buffer = kmem_alloc(*kernel_map, file_buffer_size);
 
   if (file_buffer == NULL) {
     printf("[-] Error creating memory buffer\n");
@@ -343,7 +344,7 @@ void exec_payload(struct thread *td, char* payload_path) {
 
   if (bytes_read != file_size) {
     printf("[-] Error reading the file\n");
-    kmem_free(*kernel_map, file_buffer, ROUND_PG(file_size));
+    kmem_free(*kernel_map, file_buffer, file_buffer_size);
     ksys_close(td, fd);
     return;
   }

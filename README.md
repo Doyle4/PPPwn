@@ -178,11 +178,12 @@ The custom version of stage2 first looks for the payload in the root directory o
 
 Supported versions are:
 - FW 9.00
+- FW 9.03
 - FW 9.60
 - FW 10.00 / 10.01
 - FW 10.50 / 10.70 / 10.71
 - FW 11.00
 
 Next versions are:
-- FW 9.03
+- FW 7.XX
 - TBD

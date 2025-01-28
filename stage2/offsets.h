@@ -158,6 +158,15 @@
 #define kdlsym_addr_copyinstr_patch2 0xffffffff8247182f
 #define kdlsym_addr_copyinstr_patch3 0xffffffff82471860
 
+#define kdlsym_addr_kernel_map 0xffffffff84464d48
+#define kdlsym_addr_kmem_alloc 0xffffffff8257a070
+#define kdlsym_addr_kmem_free 0xffffffff8257a23b
+
+#define kdlsym_addr_sceKernelSendNotificationRequest 0xffffffff8259fd30
+#define kdlsym_addr_vsprintf 0xffffffff822b7cb0
+#define kdlsym_addr_snprintf 0xffffffff822b7ce0
+#define kdlsym_addr_strlen 0xffffffff8250f0f0
+
 
 #elif (FIRMWARE == 950 || FIRMWARE == 951 || FIRMWARE == 960) // FW 9.50 / 9.51 / 9.60
 
